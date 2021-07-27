@@ -1,5 +1,7 @@
 package com.shris.repo;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -8,8 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.shris.domain.Order;
 import com.shris.service.Utils;
-
-import java.util.Optional;
 
 @Repository
 public class OrderRepository {
@@ -20,7 +20,7 @@ public class OrderRepository {
 
 	@Cacheable(value = "test", key = "#id")
 	public Optional<Order> getOrderById(String id) throws InterruptedException {
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 	//	System.out.println("Simulating a read from the main data store.");
 		return Optional.of(utilsService.getOrderData( 20, 100));
 	}
