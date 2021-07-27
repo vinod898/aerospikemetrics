@@ -13,7 +13,9 @@ import com.shris.domain.RequestObj;
 import com.shris.repo.OrderRepository;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class OrderService {
@@ -29,7 +31,7 @@ public class OrderService {
 			startTime = System.currentTimeMillis();
 			Optional<Order> order = orderRepository.getOrderById(id);
 			endTime = System.currentTimeMillis();
-			System.out.println("reading time " + (endTime - startTime));
+			log.info("reading time " + (endTime - startTime)+" ms");
 			return order;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -79,9 +81,7 @@ public class OrderService {
 			endTime = System.currentTimeMillis();
 			sum = sum + (endTime - startTime);
 		}
-		System.out.println(
-				Thread.currentThread().getName() + " :::" + num + " orders produced in " + sum + "  milli-sec ");
-
+		log.info(Thread.currentThread().getName() + " :::" + num + " orders produced in " + sum + "  milli-sec ");
 	}
 
 	public Optional<Order> readOrderByTicker(String ticker) {
