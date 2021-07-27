@@ -1,6 +1,6 @@
 package com.shris.config;
 
 public class AppConfig {
-	public final static int noOfProcesses = 8;
+	public final static int noOfProcesses = 16;
 
 }
