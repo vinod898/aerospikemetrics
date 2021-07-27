@@ -28,10 +28,10 @@ public class OrderService {
 	public Optional<Order> readOrderById(String id) {
 		try {
 			long startTime, endTime;
-			startTime = System.nanoTime();
+			startTime = System.currentTimeMillis();
 			Optional<Order> order = orderRepository.getOrderById(id);
-			endTime = System.nanoTime();
-			log.info("reading time " + (endTime - startTime)+" ns");
+			endTime = System.currentTimeMillis();
+			log.info("reading time " + (endTime - startTime)+" ms");
 			return order;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
